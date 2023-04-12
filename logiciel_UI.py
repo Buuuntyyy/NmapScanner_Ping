@@ -24,7 +24,7 @@ import nmap
 import os
 import threading
 import time
-
+import socket
 
 fenetre = Tk()
 
@@ -246,6 +246,9 @@ def options(commande='', checkbox1=False, checkbox2=False, checkbox3=False, chec
     return commande
         
 def pinging(ping_commande='', target_ip='127.0.0.1'):
+
+    myIp = socket.gethostbyname(socket.gethostname())
+
     if ip_ping1.get():
         target_ping = pingList_entry.get()
     elif ip_ping2.get():
@@ -376,7 +379,10 @@ start_ping = Button(end, text='Start Pinging !', bg='#c8c8c8', command=ping_thre
 start_ping.grid(column=1, row=0, padx=10)
 
 texte = Label(fenetre, text='Scans and ping')
-texte.configure(bg='#c8c8c8', font='Arial', height=1, relief=GROOVE, padx=5, pady=5)
+texte.configure(bg='#c8c8c8', font='Arial', height=1)
 texte.grid(row=0, column=0, columnspan=2, sticky='n')
 
 fenetre.mainloop()
+
+
+#Implémenter un système permettant d'implémenter automatiquement son adresse ip si on est sur réseaux inconnu (plutot que de faire ipconfig)

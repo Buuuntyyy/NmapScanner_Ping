@@ -2,6 +2,8 @@ from itertools import product
 from posixpath import split
 import nmap
 import os
+import socket
+import ipaddress
 """
 scan = nmap.PortScanner()
 scan.scan('127.0.0.1')
@@ -68,6 +70,9 @@ def again(liste):
 print((ns.csv()).split(';'))
 again(ns.csv().split(';'))
 """
+
+add = socket.gethostbyname(socket.gethostname())
+print(add)
 np = nmap.PortScanner()
 np.scan(hosts='192.168.1.0/25', arguments='-sL')
 host_list = [(x, np[x]['status']['state']) for x in np.all_hosts()]
